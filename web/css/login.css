@@ -1,0 +1,16 @@
+
+.form-group{
+	text-align:right;
+}
+
+label{
+  color: #1a1a1a;
+}
+
+#title{
+  color: #000d33;
+}
+
+#buttonSet{
+  text-align: left;
+}
