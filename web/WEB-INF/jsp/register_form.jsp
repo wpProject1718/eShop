@@ -10,15 +10,15 @@
                 if ($("#name").val() == "" || $("#pw").val() == "") {
                         alert("Empty field. Please correct it.");
                 } else {
-                    $.post("register.jsp",
-                    {
-                        name: name,
-                        pw: pw
-                    },
-                    function (data) {
-                        $("#response").html(data);
+                    $.ajax({
+                        type: "post",
+                        url: "register.jsp", //this is my servlet
+                        data: "name=" +name+"&pw="+pw,
+                        success: function(msg){      
+                            $("#response").html(msg);
+                            $("#register")[0].reset();
+                        }
                     });
-                    $("#register")[0].reset();
                 }
             });
         });
