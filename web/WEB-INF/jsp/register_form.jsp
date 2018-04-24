@@ -18,7 +18,6 @@
                     function (data) {
                         $("#response").html(data);
                     });
-                    alert();
                     $("#register")[0].reset();
                 }
             });
