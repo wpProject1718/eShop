@@ -10,15 +10,27 @@
         $("#submit").click(function () {
             name = $("#username").val();
             pw = $("#password").val();
-             //alert(name + pw);
+            //alert(name + pw);
             //alert(name + ": " + name.length);
             //alert(pw + ": " + pw.length);
             if (name.length == 0 || pw.length == 0) {
                 alert("Empty field. Please correct it.");
                 return false;
             } else {
-                $("#register").submit(); // submit form
-
+                //$("#register").submit(); // submit form
+                $.ajax({
+                    type: "post",
+                    url: "register_process.htm", //this is my servlet
+                    data: "username=" + name + "&password=" + pw,
+                    success: function (msg) {
+                        ///alert(msg);
+                        $("#response").html(msg);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus);
+                        alert("Error: " + errorThrown);
+                    }
+                });
             }
         });
     });
@@ -59,8 +71,15 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-xs-3"></label>
                     <div class="col-md-5 col-sm-9 col-xs-9" id="buttonSet">
-                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                        <button type="button" class="btn btn-primary" id="submit">Submit</button>
                         <button type="reset" class="btn btn-primary">Clear</button>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-xs-3"></label>
+                    <div class="col-md-5 col-sm-9 col-xs-9">
+                        <div id='response'></div>
                     </div>
                 </div>
             </div>

@@ -13,29 +13,28 @@
                 alert("Empty field. Please correct it.");
                 return false;
             } else {
-                $("#login").submit(); // submit form
+                //$("#login").submit(); // submit form
                 //alert(name + pw);
-                /*$.ajax({
+                $.ajax({
                     type: "post",
-                    url: "loginsuccess.htm", //this is my servlet
-                    data: "name=" + name + "&pw=" + pw,
+                    url: "login_process.htm", //this is my servlet
+                    data: "username=" + name + "&password=" + pw,
                     success: function (msg) {
-                        alert(msg);
-                        //                            $("#response").html(msg);
-                        //                           $("#register")[0].reset();
+                        ///alert(msg);
+                        $("#response").html(msg);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Status: " + textStatus);
                         alert("Error: " + errorThrown);
                     }
-                });*/
+                });
             }
         });
     });
 </script>
 </head>
 <body>
-    <form action="login.htm" method="post" id="login">
+    <form action="login_process.htm" method="post" id="login">
         <div style="padding: 50px 0 70px 0;">
             <div class="container" style="padding-top: 20px;">
 
@@ -68,9 +67,17 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-xs-3"></label>
                     <div class="col-md-5 col-sm-9 col-xs-9" id="buttonSet">
-                        <button type="submit" class="btn btn-primary" id="submit" name="submit">Login</button>
+                        <button type="button" class="btn btn-primary" id="submit" name="submit">Login</button>
                     </div>
                 </div>
+                
+                <div class="form-group row">
+                    <label class="col-sm-3 col-xs-3"></label>
+                    <div class="col-md-5 col-sm-9 col-xs-9">
+                        <div id='response'></div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </form>

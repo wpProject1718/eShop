@@ -34,6 +34,17 @@ public class CartController {
         return mv;
     }
 
+    @RequestMapping(value = "/removecart")
+    public ModelAndView removeCart(HttpServletRequest request) {
+        mv.setViewName("login");
+        if (request.getSession().getAttribute("userid") != null) {
+            mv.addObject("uid", request.getParameter("uid"));
+            mv.addObject("pid", request.getParameter("pid"));
+            mv.setViewName("removecart");
+        }
+        return mv;
+    }
+
     @RequestMapping(value = "/checkout")
     public ModelAndView checkout(HttpServletRequest request) {
         mv.setViewName("login");

@@ -68,6 +68,4 @@
 %>
     </div>
 </body>
-<c:import url="../jsp/getheader.jsp"/>
-<c:import url="../html/footer.html"/>
 </html>
