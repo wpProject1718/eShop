@@ -16,8 +16,10 @@
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     <bean class="controller.RegisterController"/>
     <bean class="controller.AdminController"/>
+    <bean class="controller.SellerController"/>
     <bean class="controller.LoginController"/>
     <bean class="controller.FileUploadController"/>
+    <bean class="controller.ViewProductController"/>
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
