@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <%@ page import = "java.io.*,java.util.*" %>
-<html>
-<head>
-<title>Add New Category</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../jsp/getheader.jsp"/>
 </head>
 <body>
 	<form method="POST" id="category">

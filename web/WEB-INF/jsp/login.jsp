@@ -1,15 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../html/header.html"/>
+<c:import url="../jsp/getheader.jsp"/>
 <link rel='stylesheet' type='text/css' href='css/login.css' >
-
 </head>
-
 <body>
     <div style="padding: 50px 0 70px 0;">
         <div class="container" style="padding-top: 20px;">
 
             <div class="row">
-                <div class="col-sm-5 col-xs-12" id="title"><h3>Login Page</h></div>
+                <div class="col-sm-5 col-xs-12" id="title"><h3>Login Page</div>
             </div>
 
             <hr/>
