@@ -48,7 +48,6 @@
 			out.println("Same product name has already existed. Please check.");
 		}else{
 			int inserted = stmt.executeUpdate("INSERT into product (product_name,product_price,product_info,product_num,product_cat,product_img) values('"+name+"','"+price+"','"+info+"','"+num+"','"+cat+"','"+img+"')");
-			out.println("INSERT into product (product_name,product_price,product_info,product_num,product_cat,product_img) values('"+name+"','"+price+"','"+info+"','"+num+"','"+cat+"','"+img+"'");
 			if(inserted==1){
 				out.println("Create succeed: \n\tProduct name \""+name+"\"");
 				//response.sendRedirect("index.htm");

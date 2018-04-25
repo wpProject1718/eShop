@@ -10,18 +10,6 @@ public class SellerController {
 
     ModelAndView mv = new ModelAndView();
 
-    /*
-    @RequestMapping(value = "/seller")
-    public ModelAndView adminPage(HttpServletRequest request) {
-        mv.setViewName("login");
-        if (request.getSession().getAttribute("type") != null) {
-            int type = (int) request.getSession().getAttribute("type");
-            if (type == 2) {
-                mv.setViewName("seller_page");
-            }
-        }
-        return mv;
-    }*/
     @RequestMapping(value = "/seller_modify")
     public ModelAndView modify(HttpServletRequest request
     ) {
@@ -42,7 +30,7 @@ public class SellerController {
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 2) {
-                mv.setViewName("create_product");
+                mv.setViewName("addProduct");
             }
         }
         return mv;

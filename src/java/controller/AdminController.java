@@ -10,18 +10,6 @@ public class AdminController {
 
     ModelAndView mv = new ModelAndView();
 
-    /*@RequestMapping(value = "/admin")
-    public ModelAndView adminPage(HttpServletRequest request) {
-        mv.setViewName("home");
-        if (request.getSession().getAttribute("type") != null) {
-            int type = (int) request.getSession().getAttribute("type");
-            if (type == 3) {
-                mv.setViewName("admin_page");
-            }
-        }
-        return mv;
-    }*/
-
     @RequestMapping(value = "/admin_create")
     public ModelAndView modify(HttpServletRequest request
     ) {
@@ -47,17 +35,4 @@ public class AdminController {
         }
         return mv;
     }
-    /*
-    @RequestMapping(value = "/admin_product")
-    public ModelAndView modifyProduct(HttpServletRequest request
-    ) {
-        mv.setViewName("home");
-        if (request.getSession().getAttribute("type") != null) {
-            int type = (int) request.getSession().getAttribute("type");
-            if (type == 3) {
-                mv.setViewName("admin_product");
-            }
-        }
-        return mv;
-    }*/
 }

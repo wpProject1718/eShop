@@ -85,7 +85,7 @@
 
                     out.println("<table>");
                     out.println("<tr>");
-                    out.println("<tr><td colspan='2'><img src=\"" + pro_img + "\"/></td></tr>");
+                    out.println("<tr><td colspan='2'><img src=\"" + pro_img + "\" style='max-width: 500px;'/></td></tr>");
                     out.println("<tr><td>Product Name: </td><td>" + pro_name + "</td></tr>");
                     out.println("<tr><td>Category</td><td>" + pro_cat + "</td></tr>");
                     out.println("<tr><td>Price: </td><td>$" + pro_price + "</td></tr>");
