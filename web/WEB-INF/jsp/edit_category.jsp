@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Edit Category</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../jsp/getheader.jsp"/>
 <%
 	Connection conn = null;
 	Statement stmt = null;
@@ -55,7 +53,7 @@
 		<td colspan = '2'>
 			Name
 		</td>
-	</td>
+	</tr>
 	<%
 	while(rs.next())
 		{   
@@ -72,6 +70,6 @@
   </tr>
 </table>
 
-</form>
 </body>
 </html>
+<c:import url="../html/footer.html"/>
