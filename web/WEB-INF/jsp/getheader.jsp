@@ -4,7 +4,7 @@
 <c:choose>
     <c:when test="${sessionScope.userid != null}">
         <c:choose>
-            <c:when test="${sessionScope.usertype == admin}">
+            <c:when test="${sessionScope.type == admin}">
                 <c:import url="../html/header_admin.html"/>
             </c:when>
             <c:otherwise>

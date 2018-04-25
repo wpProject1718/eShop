@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,8 +23,8 @@
 		out.println("Cannot connect db!");
 	}
 	
-	String name = request.getParameter("name");
-	String pw = request.getParameter("pw");
+	String name = request.getParameter("username");
+	String pw = request.getParameter("password");
     if(name == null || pw == null){
 		out.println("Please enter the user name AND password!");
 	}else{
@@ -49,7 +50,7 @@
 		}else{
 			if(enable == 1){//Account valid
 				out.println("Welcome back! " + name);
-				switch(userType){
+				switch(usertype){
 					case 1:
 						out.println("(Customer)");
 						break;
@@ -63,11 +64,11 @@
 				session.setAttribute("userid",id);
 				session.setAttribute("type",usertype);
 			}else{
-				out.println("Your acconut has been banned.")
+				out.println("Your acconut has been banned.");
 			}
 		}
 	}
-	
 %>
+<c:redirect url="/home.htm"/>
 </body>
 </html>

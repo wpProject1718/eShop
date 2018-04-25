@@ -24,7 +24,7 @@ public class RegisterController extends SimpleFormController {
         setCommandClass(RegisterController.class);
         setCommandName("Register");
         setSuccessView("registersuccess");
-        setFormView("register_form");
+        setFormView("register");
     }
     
     /*@Override
@@ -43,8 +43,8 @@ public class RegisterController extends SimpleFormController {
             BindException errors) throws Exception {
         //Register register = (Register) command;
         ModelAndView mv = new ModelAndView(getSuccessView());
-        mv.addObject("username", request.getParameter("user_name"));
-        mv.addObject("password", request.getParameter("user_pw"));
+        mv.addObject("username", request.getParameter("username"));
+        mv.addObject("password", request.getParameter("password"));
         return mv;
     }
      

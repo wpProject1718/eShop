@@ -28,17 +28,18 @@
             <props>
                 <prop key="home.htm">indexController</prop>
                 <prop key="login.htm">loginController</prop>
+                <prop key="logout.htm">logoutController</prop>
             </props>
         </property>
     </bean>
 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
-		 <!-- setting maximum upload size -->
-		<property name="maxUploadSize" value="10000000" />
+        <!-- setting maximum upload size -->
+        <property name="maxUploadSize" value="10000000" />
 
-	</bean>
+    </bean>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -56,5 +57,8 @@
     <bean name="loginController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="login" />
+    <bean name="logoutController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="logout" />
     
 </beans>
