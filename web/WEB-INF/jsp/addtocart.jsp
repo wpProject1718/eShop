@@ -48,13 +48,15 @@
 		}
 		
 		if(!pass){
-			out.println("The product you choose is too large. Current in stock: " + curr);
+			out.println("The number you choose is too large. Current in stock: " + curr);
 		}else{
 			int inserted = -1;
+                        int tempNum = Integer.parseInt(num) + alreadyadded;
 			if(added){
-				inserted = stmt.executeUpdate("UPDATE cart_temp SET product_num='"+(alreadyadded+num)+"' WHERE product_id="+pid+"' AND user_id ='"+uid+"'");
+				inserted = stmt.executeUpdate("UPDATE cart_temp SET product_num='"+tempNum+"' WHERE product_id='"+pid+"' AND user_id ='"+uid+"'");
+                 //               out.println("UPDATE cart_temp SET product_num='"+(alreadyadded+num)+"' WHERE product_id='"+pid+"' AND user_id ='"+uid+"'");
 			}else{
-				inserted = stmt.executeUpdate("INSERT into cart_temp (user_id,product_id,product_num) values('"+uid+"','"+pid+"','"+num+"')");
+				inserted = stmt.executeUpdate("INSERT into cart_temp (user_id,product_id,product_num) values('"+uid+"','"+pid+"','"+tempNum+"')");
 			
 			}
 			if(inserted==1){
