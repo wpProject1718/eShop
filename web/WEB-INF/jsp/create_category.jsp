@@ -3,42 +3,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../jsp/getheader.jsp"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#submit").click(function () {
-                name = $("#name").val();
-                if (name == "") {
-                    alert("Empty field. Please correct it.");
-                } else {
-                     $.ajax({
-                        type: "post",
-                        url: "createcatsuccess.jsp", //this is my servlet
-                        data: "name=" +name,
-                        success: function(msg){      
-                            $("#response").html(msg);
-                            $("#category").reset();
-                        }
-                    });
-                    //$("#category").submit();
-                }
-            });
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            name = $("#name").val();
+            if (name == "") {
+                alert("Empty field. Please correct it.");
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "addcat.htm", //this is my servlet
+                    data: "name=" + name,
+                    success: function (msg) {
+                        $("#response").html(msg);
+                        $("#category").reset();
+                    }
+                });
+                //$("#category").submit();
+            }
         });
-    </script>
+    });
+</script>
 </head>
 <body>
-	<form method="POST" id="category">
-    	<table>
-        	<tr>
-            	<td>Category name</td>
-                <td><input name="pro_name" type="text" id="name"/></td>
-            </tr>
-           	<tr>
-            	<td></td>
-                <td>
-                	<input type="button" value="Create Product" id="submit"/>
-					<input type="reset" value="Reset" id="reset"/>
-                </td>
-        </table>
-	</form>	
+    <div style="padding: 60px 0 70px 0;">
+        <form method="POST" id="category">
+            <table>
+                <tr>
+                    <td>Category name</td>
+                    <td><input name="pro_name" type="text" id="name"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Create Product" id="submit"/>
+                        <input type="reset" value="Reset" id="reset"/>
+                    </td>
+            </table>
+        </form>	
+    </div>
 </body>
 </html>

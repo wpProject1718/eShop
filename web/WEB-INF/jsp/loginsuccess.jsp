@@ -36,7 +36,7 @@
 		{   
 			if(rs.getString("name").equals(name) && rs.getString("pw").equals(pw)){
 				pass = true;
-				enable = rs.getInt("enable");
+				id = rs.getInt("user_id");
 				usertype = rs.getInt("type");
 				enable = rs.getInt("enable");
 				break;

@@ -1,17 +1,15 @@
-<%-- 
-    Document   : admin
-    Created on : 2018年4月25日, 下午04:45:23
-    Author     : 
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel='stylesheet' type='text/css' href='css/thumbnail.css' >
+<c:import url="../jsp/getheader.jsp"/>
+</head>
+<body>
+    <div style="padding: 60px 0 70px 0;">
+        <div class="container" style="padding-top: 20px;">
+            <div class="row">
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<c:import url="../html/footer.html"/>
