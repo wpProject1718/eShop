@@ -11,6 +11,13 @@ public class CategoryController {
 
     ModelAndView mv = new ModelAndView();
 
+    @RequestMapping(value = "/category")
+    public ModelAndView category(HttpServletRequest request) {
+        mv.addObject("category", request.getParameter("category"));
+        mv.setViewName("category");
+        return mv;
+    }
+
     @RequestMapping(value = "/addcat", method = RequestMethod.POST)
     public ModelAndView addCat(HttpServletRequest request) {
         mv.setViewName("login");

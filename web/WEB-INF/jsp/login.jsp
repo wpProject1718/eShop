@@ -22,6 +22,7 @@
                     success: function (msg) {
                         ///alert(msg);
                         $("#response").html(msg);
+                        window.location.href = "home.htm";
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Status: " + textStatus);

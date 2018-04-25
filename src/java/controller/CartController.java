@@ -45,11 +45,18 @@ public class CartController {
         return mv;
     }
 
-    @RequestMapping(value = "/checkout")
+    @RequestMapping(value = "/checkout",method = RequestMethod.GET)
+    public ModelAndView checkoutGET(HttpServletRequest request) {
+        mv.setViewName("home");
+        return mv;
+    }
+    
+    @RequestMapping(value = "/checkout",method = RequestMethod.POST)
     public ModelAndView checkout(HttpServletRequest request) {
         mv.setViewName("login");
         if (request.getSession().getAttribute("userid") != null) {
-            mv.setViewName("receipt");
+            mv.addObject("uid", request.getParameter("uid"));
+            mv.setViewName("checkout");
         }
         return mv;
     }

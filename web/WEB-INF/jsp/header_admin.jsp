@@ -1,10 +1,28 @@
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page import = "java.io.*,java.util.*" %>
 <html>
     <head>
-
+<%
+	Connection conn = null;
+	Statement stmt = null;
+	try {
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	} catch (Exception E) {}
+	try {
+		conn = DriverManager.getConnection(
+			"jdbc:mysql:///db?user=root&password=");
+		stmt =  conn.createStatement(
+					ResultSet.TYPE_SCROLL_SENSITIVE,  
+					ResultSet.CONCUR_UPDATABLE); 
+		
+	} catch (SQLException E) {
+		out.println("Cannot connect db!");
+	}
+	%>
         <title> Shalala </title>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/header.css">
         <link rel="stylesheet" type="text/css" href="css/footer.css">
         <link rel='stylesheet' type='text/css' href='css/home.css' >
@@ -35,17 +53,25 @@
                                 <li class=" dropdown">
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
                                     <ul class="dropdown-menu" id="drop">
-                                        <li><a href="">Cat1</a></li>
-                                        <li><a href="">Cat2</a></li>
-                                        <li><a href="">Cat3</a></li>
+                                      <%
+                                        ResultSet rset = stmt.executeQuery("select * from category ORDER BY cat_id ASC");
+
+                                        while(rset.next())
+                                        {  
+                                                out.println("<li><a href='category.htm?category="+rset.getString("cat_id")+"'>"+rset.getString("cat_name") +"</a></li>");
+                                        }
+                                        %>
                                     </ul>
                                 </li>
                             </ul>
 
 
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="login.htm" >Login</a></li>
-                                <li><a href="register.htm" >Sign Up</a></li>
+                                <li><a href="" >Admin</a></li>
+                                <li><a href="cart.htm" >Shopping Cart</a></li>
+                                <li><a href="admin_create.htm" >Create Category</a></li>
+                                <li><a href="admin_category.htm" >Edit Category</a></li>
+                                <li><a href="logout.htm" >Logout</a></li>
 
                             </ul>
 

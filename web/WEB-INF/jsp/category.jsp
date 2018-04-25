@@ -23,9 +23,11 @@
 				} catch (SQLException E) {
 					out.println("Cannot connect db!");
 				}
-				
+                                
+				String cat_id = request.getParameter("category");
+                                
 				Boolean pass = true;
-				ResultSet rs = stmt.executeQuery("select * from product ORDER BY product_id ASC LIMIT 16");
+				ResultSet rs = stmt.executeQuery("select * from product where product_cat = "+ cat_id +" ORDER BY product_id ASC LIMIT 16");
 				
 				while(rs.next())
 				{   

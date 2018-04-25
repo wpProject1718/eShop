@@ -20,7 +20,20 @@
                     }
                 });
             }
-
+            if ( $(this).attr("id") == "Purchase") {    
+                $("#checkout").submit(); // submit form
+                //alert("uid=" + $("#userid").val() + "&pid=" + but_name[1]);
+                /*$.ajax({
+                    type: "post",
+                    url: "checkout.htm", //this is my servlet
+                    data: "uid=" + $("#userid").val(),
+                    success: function (msg) {
+                        //$("#response").html(msg);
+                        //alert(msg);
+                        location.reload();
+                    }
+                });*/
+            }
 
         });
     });
@@ -64,7 +77,7 @@
                             String pro_img = rs.getString("product_img");
                             String pro_num = rs.getString("product_num");
                             double subtotal = Double.parseDouble(pro_price) * Double.parseDouble(pro_num);
-                            
+                            out.println("<form id='checkout' action='checkout.htm' method='post'>");
                             out.println("<div class='list-group-item col-md-12 col-sm-6 col-xs-12'>");
 				//<!--Product Photo-->
 				out.println("<div class='media col-md-4'>");
@@ -94,11 +107,12 @@
                         }
                         //<!--Bottom Info.-->
                         out.println("<div><div class='col-md-11 col-sm-7' id='total'><h2 class='list-group-item-heading'><b>Total: $" + total + "</b></h2></div>");
-                        out.println("<div class='col-md-1 col-sm-5' id='pay'><button type='submit' class='btn btn-info btn-lg' id='Purchase'><span class='glyphicon glyphicon-usd'></span> Purchase </button></div></div>");
+                        out.println("<div class='col-md-1 col-sm-5' id='pay'><button type='button' class='btn btn-info btn-lg' id='Purchase'><span class='glyphicon glyphicon-usd'></span> Purchase </button></div></div>");
 
 //				out.println("Total: $"+total);
                         out.println("<input type='hidden' id='userid' value='" + session.getAttribute("userid") + "'/>");
                         out.println("<div id='response'></div>");
+                        out.println("</form>");
 
                     } else {
                         out.println("<marquee>What you find here are not existed~</marquee>");
@@ -106,6 +120,5 @@
                 %>
             </div>
         </div>
-    </div>
 </body>
 <c:import url="../html/footer.html"/>
