@@ -38,7 +38,7 @@
                 <!--End of one item-->
             </div>
             
-             <hr class="col-sm-12 col-xs-12">
+             <hr class="col-sm-12 col-xs-12" id="line">
 
             <div class="list-group-item col-md-12 col-sm-6 col-xs-12">
                 <!--Product Photo-->
