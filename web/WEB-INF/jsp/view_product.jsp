@@ -27,9 +27,10 @@
             if (parseInt($("#quantity").val()) == 0) {
                 alert("Please add at least one first.");
             } else {
+                //alert("uid=" + uid + "&pid=" + pid + "&quantity=" + $("#quantity").val());
                 $.ajax({
                     type: "post",
-                    url: "addtocart.jsp", //this is my servlet
+                    url: "addtocart.htm", //this is my servlet
                     data: "uid=" + uid + "&pid=" + pid + "&quantity=" + $("#quantity").val(),
                     success: function (msg) {
                         $("#response").html(msg);

@@ -1,9 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Add to Cart Success</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 <%
@@ -52,13 +48,15 @@
 		}
 		
 		if(!pass){
-			out.println("The product you choose is too large. Current in stock: " + curr);
+			out.println("The number you choose is too large. Current in stock: " + curr);
 		}else{
 			int inserted = -1;
+                        int tempNum = Integer.parseInt(num) + alreadyadded;
 			if(added){
-				inserted = stmt.executeUpdate("UPDATE cart_temp SET product_num='"+(alreadyadded+num)+"' WHERE product_id="+pid+"' AND user_id ='"+uid+"'");
+				inserted = stmt.executeUpdate("UPDATE cart_temp SET product_num='"+tempNum+"' WHERE product_id='"+pid+"' AND user_id ='"+uid+"'");
+                 //               out.println("UPDATE cart_temp SET product_num='"+(alreadyadded+num)+"' WHERE product_id='"+pid+"' AND user_id ='"+uid+"'");
 			}else{
-				inserted = stmt.executeUpdate("INSERT into cart_temp (user_id,product_id,product_num) values('"+uid+"','"+pid+"','"+num+"')");
+				inserted = stmt.executeUpdate("INSERT into cart_temp (user_id,product_id,product_num) values('"+uid+"','"+pid+"','"+tempNum+"')");
 			
 			}
 			if(inserted==1){
@@ -72,4 +70,5 @@
 	
 %>
 </body>
+<c:import url="../html/footer.html"/>
 </html>
