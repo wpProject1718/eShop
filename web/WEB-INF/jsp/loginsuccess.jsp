@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <%@ page import = "java.io.*,java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../jsp/getheader.jsp"/>
 </head>
 <body>
     <div style="padding: 70px 0 70px 0;">
@@ -69,5 +68,6 @@
 %>
     </div>
 </body>
+<c:import url="../jsp/getheader.jsp"/>
 <c:import url="../html/footer.html"/>
 </html>

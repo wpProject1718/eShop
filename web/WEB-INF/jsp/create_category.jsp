@@ -10,13 +10,17 @@
             if (name == "") {
                 alert("Empty field. Please correct it.");
             } else {
+                //alert(name);
                 $.ajax({
                     type: "post",
                     url: "addcat.htm", //this is my servlet
                     data: "name=" + name,
                     success: function (msg) {
                         $("#response").html(msg);
-                        $("#category").reset();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus);
+                        alert("Error: " + errorThrown);
                     }
                 });
                 //$("#category").submit();
@@ -31,14 +35,19 @@
             <table>
                 <tr>
                     <td>Category name</td>
-                    <td><input name="pro_name" type="text" id="name"/></td>
+                    <td><input name="pro_name" type="text" id="name" name="name"/></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" value="Create Product" id="submit"/>
+                        <input type="button" value="Create Category" id="submit"/>
                         <input type="reset" value="Reset" id="reset"/>
                     </td>
+                <tr>
+                    <td colspan='2'>
+                        <div id="response"></div>
+                    </td>
+                </tr>
             </table>
         </form>	
     </div>

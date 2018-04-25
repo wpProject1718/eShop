@@ -25,7 +25,7 @@ public class AdminController {
     @RequestMapping(value = "/admin_create")
     public ModelAndView modify(HttpServletRequest request
     ) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 3) {
@@ -38,7 +38,7 @@ public class AdminController {
     @RequestMapping(value = "/admin_category")
     public ModelAndView modifyCategory(HttpServletRequest request
     ) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 3) {

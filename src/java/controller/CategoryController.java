@@ -11,10 +11,10 @@ public class CategoryController {
 
     ModelAndView mv = new ModelAndView();
 
-    @RequestMapping(value = "/addcat", method = RequestMethod.GET)
+    @RequestMapping(value = "/addcat", method = RequestMethod.POST)
     public ModelAndView addCat(HttpServletRequest request) {
-        mv.setViewName("home");
-        if (request.getSession().getAttribute("type") == null) {
+        mv.setViewName("login");
+        if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 3) {
                 mv.addObject("name", request.getParameter("name"));
@@ -26,8 +26,8 @@ public class CategoryController {
 
     @RequestMapping(value = "/editcat")
     public ModelAndView editCart(HttpServletRequest request) {
-        mv.setViewName("home");
-        if (request.getSession().getAttribute("type") == null) {
+        mv.setViewName("login");
+        if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 3) {
                 mv.addObject("id", request.getParameter("id"));

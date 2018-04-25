@@ -10,9 +10,10 @@ public class SellerController {
 
     ModelAndView mv = new ModelAndView();
 
+    /*
     @RequestMapping(value = "/seller")
     public ModelAndView adminPage(HttpServletRequest request) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 2) {
@@ -20,12 +21,11 @@ public class SellerController {
             }
         }
         return mv;
-    }
-
+    }*/
     @RequestMapping(value = "/seller_modify")
     public ModelAndView modify(HttpServletRequest request
     ) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 2) {
@@ -35,23 +35,43 @@ public class SellerController {
         return mv;
     }
 
-    @RequestMapping(value = "/seller_category")
-    public ModelAndView modifyCategory(HttpServletRequest request
+    @RequestMapping(value = "/seller_create")
+    public ModelAndView createProduct(HttpServletRequest request
     ) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 2) {
-                mv.setViewName("seller_category");
+                mv.setViewName("create_product");
             }
         }
         return mv;
     }
 
+    
+    @RequestMapping(value = "/createproduct")
+    public ModelAndView createProductsuccess(HttpServletRequest request
+    ) {
+        mv.setViewName("login");
+        if (request.getSession().getAttribute("type") != null) {
+            int type = (int) request.getSession().getAttribute("type");
+            if (type == 2) {
+                mv.addObject("name", request.getParameter("name"));
+                mv.addObject("price", request.getParameter("price"));
+                mv.addObject("cat", request.getParameter("cat"));
+                mv.addObject("num", request.getParameter("num"));
+                mv.addObject("img", request.getParameter("img"));
+                mv.addObject("info", request.getParameter("info"));
+                mv.setViewName("createproductsuccess");
+            }
+        }
+        return mv;
+    }
+    
     @RequestMapping(value = "/seller_product")
     public ModelAndView modifyProduct(HttpServletRequest request
     ) {
-        mv.setViewName("home");
+        mv.setViewName("login");
         if (request.getSession().getAttribute("type") != null) {
             int type = (int) request.getSession().getAttribute("type");
             if (type == 2) {

@@ -26,13 +26,6 @@ public class FileUploadController {
     /**
      * Upload single file using Spring Controller
      */
-    @RequestMapping(value = "/addproduct")
-    public ModelAndView uploadPage() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("addProduct");
-
-        return mv;
-    }
 
     @RequestMapping(value = "/uploadFile")
     public @ResponseBody
@@ -60,7 +53,7 @@ public class FileUploadController {
                 logger.info("Server File Location="
                         + serverFile.getAbsolutePath());
 
-                return "You successfully uploaded file:" + name + serverFile.getAbsolutePath();
+                return "You successfully uploaded file: " + name +" to "+ serverFile.getAbsolutePath();
             } catch (Exception e) {
                 return "You failed to upload file => " + e.getMessage();
             }
