@@ -103,7 +103,6 @@
             </tr>
            	<tr>
             	<td>Product Information</td>
-                <td><textarea name="pro_info" cols="" rows="" id="info"></textarea></td>
                 <td><textarea name="pro_info" cols="3" rows="3" id="info"></textarea></td>
             </tr>
            <tr>
