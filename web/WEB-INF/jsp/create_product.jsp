@@ -50,6 +50,9 @@
 		
 		
     </script>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../jsp/getheader.jsp"/>
 </head>
 <body>
 <%
@@ -101,6 +104,7 @@
            	<tr>
             	<td>Product Information</td>
                 <td><textarea name="pro_info" cols="" rows="" id="info"></textarea></td>
+                <td><textarea name="pro_info" cols="3" rows="3" id="info"></textarea></td>
             </tr>
            <tr>
             	<td>Product Image</td>
