@@ -1,26 +1,57 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<%@ page import = "java.io.*,java.util.*" %>
 <html>
 <head>
 <title>Add New Product</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#image").focusout(function () {
+                imghref = $("#image").val();
+				if(imghref.indexOf(".jpg")>0||imghref.indexOf(".png")>0){
+					$("#preview").attr('src',imghref);
+				}
+            });
+			$("#submit").click(function () {
+				
+                pname = $("#name").val();
+                pprice = $("#price").val();
+                pcat = $("#cat").val();
+                pnum= $("#num").val();
+                imghref = $("#image").val();
+                pinfo = $("#info").val();
+				if(pname.length==0||pprice.length==0||pnum.length==0||imghref.length==0){
+					alert("Some value are missing! Please check.");
+				}else{
+					
+					if(imghref.indexOf(".jpg")==-1&&imghref.indexOf(".png")==-1){
+						alert("The link of the image is invalid. Please check(Only accept jpg and png)");
+					}else if(/(^\d+$|^\d+[.]\d{1}$)/.test(pprice)&&/(^\d+$|^\d+[.]\d{1}$)/.test(pnum)){
+						alert("name=" +pname+"&price="+pprice+"&cat="+pcat+"&num="+pnum+"&img="+imghref+"&info="+pinfo);
+						$.ajax({
+							type: "post",
+							url: "createproductsuccess.jsp", //this is my servlet
+							data: "name=" +pname+"&price="+pprice+"&cat="+pcat+"&num="+pnum+"&img="+imghref+"&info="+pinfo,
+							success: function(msg){      
+								alert("msg");
+	 //                           $("#register")[0].reset();
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+							}   
+						});
+					}else{
+						alert("Some field are invalid(price/quantity)");
+					}
+				}
+				
+            });
+        });
+		
+		
+		
+    </script>
 </head>
 <body>
-<script language = "javascript">
-	function Validate(fileName,fileTypes) {
-		var dots = fileName.split(".");
-		var fileType = "." + dots[dots.length-1];
-		if (Upload_Valid.datafile.value == ""){	
-			alert("You haven't browse a file\nPlease select a new file and try again.");
-			return false;
-			}else if(fileTypes.join(".").indexOf(fileType) != -1){
-				return true;
-			}else{
-				alert("Please only upload files that end in types: \n\n" + (fileTypes.join(" .")) + "\n\nPlease select a new file and try again.");
-				return false;
-			}
-	}
-
-</script>
 <%
 	Connection conn = null;
 	Statement stmt = null;
@@ -37,10 +68,10 @@
 		out.println("Cannot connect db!");
 	}
 
-	ResultSet rs = stmt.executeQuery("select * from cateogry");
+	ResultSet rs = stmt.executeQuery("select * from category ORDER by cat_id asc");
 %>
 
-	<form method="POST" action="" enctype="multipart/form-data" onsubmit="return Validate(Upload_Valid.datafile.value,['gif','jpg','png','jpeg'])">
+	<form method="POST" action="">
     	<table>
         	<tr>
             	<td>Product Name:</td>
@@ -48,11 +79,11 @@
             </tr>
            	<tr>
             	<td>Product Price</td>
-                <td><input name="pro_price" type="text" id="price"/></td>
+                <td><input name="pro_price" type="number" id="price"/></td>
             </tr>
            	<tr>
             	<td>Product Category</td>
-                <td><select name="category">
+                <td><select name="category" id ="cat">
 				<%
 					while(rs.next())
 					{   
@@ -65,23 +96,28 @@
             
            	<tr>
             	<td>Product quantity</td>
-                <td><input name="pro_num" type="text" id="num"/></td>
+                <td><input name="pro_num" type="number" id="num" min="1"/></td>
             </tr>
            	<tr>
             	<td>Product Information</td>
                 <td><textarea name="pro_info" cols="" rows="" id="info"></textarea></td>
             </tr>
-           	<tr>
+           <tr>
             	<td>Product Image</td>
-                <td>File to upload: <input type="file" name="file"></td>
+                <td><input name="pro_img" type="text" id="image"/></td>
             </tr> 
-            
-           	<tr>
-            	<td>Product Image</td>
-                <td>File to upload: <input type="file" name="file" accept="image/gif, image/jpeg, image/jpg, image/png"></td>
+           <tr>
+            	<td>Preview</td>
+                <td><img src="" alt="" id="preview"></td>
             </tr> 
-		<input type="button" value="Create Product" id="submit"/>
-		<input type="reset" value="Reset" id="reset"/>
+           <tr>
+            	<td></td>
+                <td>
+                    <input type="button" value="Create Product" id="submit"/>
+                    <input type="reset" value="Reset" id="reset"/>
+                </td>
+            </tr> 
+		
         </table>
 	</form>	
 </body>
