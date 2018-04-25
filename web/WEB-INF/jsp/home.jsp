@@ -12,7 +12,7 @@
                     <li class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <div class="Product">
-                                <a href="https://www.w3schools.com">
+                                <a href="product.htm?productid=1">
                                     <img class=" img-rounded img-responsive"  src='http://placehold.it/300x200/'>
                                 </a>
 

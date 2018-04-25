@@ -1,46 +1,37 @@
+<link rel='stylesheet' type='text/css' href='css/login.css' >
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../jsp/getheader.jsp"/>
-<link rel='stylesheet' type='text/css' href='css/login.css' >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+
     $(document).ready(function () {
         $("#submit").click(function () {
-
             name = $("#username").val();
             pw = $("#password").val();
-
+             //alert(name + pw);
+            //alert(name + ": " + name.length);
+            //alert(pw + ": " + pw.length);
             if (name.length == 0 || pw.length == 0) {
                 alert("Empty field. Please correct it.");
                 return false;
             } else {
-                $("#login").submit(); // submit form
-                //alert(name + pw);
-                /*$.ajax({
-                    type: "post",
-                    url: "loginsuccess.htm", //this is my servlet
-                    data: "name=" + name + "&pw=" + pw,
-                    success: function (msg) {
-                        alert(msg);
-                        //                            $("#response").html(msg);
-                        //                           $("#register")[0].reset();
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert("Status: " + textStatus);
-                        alert("Error: " + errorThrown);
-                    }
-                });*/
+                $("#register").submit(); // submit form
+
             }
         });
     });
 </script>
 </head>
+
 <body>
-    <form action="login.htm" method="post" id="login">
+    <form action="" method="post" id="register">
         <div style="padding: 50px 0 70px 0;">
             <div class="container" style="padding-top: 20px;">
 
                 <div class="row">
-                    <div class="col-sm-5 col-xs-12" id="title"><h3>Login Page</div>
+                    <div class="col-sm-5 col-xs-12" id="title"><h3><b>Register Page</b></h3></div>
                 </div>
 
                 <hr/>
@@ -50,7 +41,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                         </div>
                     </div>
                 </div>
@@ -60,7 +51,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         </div>
                     </div>
                 </div>
@@ -68,7 +59,8 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-xs-3"></label>
                     <div class="col-md-5 col-sm-9 col-xs-9" id="buttonSet">
-                        <button type="submit" class="btn btn-primary" id="submit" name="submit">Login</button>
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                        <button type="reset" class="btn btn-primary">Clear</button>
                     </div>
                 </div>
             </div>

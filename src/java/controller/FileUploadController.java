@@ -20,54 +20,52 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileUploadController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(FileUploadController.class);
+    private static final Logger logger = LoggerFactory
+            .getLogger(FileUploadController.class);
 
-	/**
-	 * Upload single file using Spring Controller
-	 */
-        
-        @RequestMapping(value = "/upload")
-        public ModelAndView uploadPage() {
-            ModelAndView mv = new ModelAndView();
-            mv.setViewName("upload");
-        
+    /**
+     * Upload single file using Spring Controller
+     */
+    @RequestMapping(value = "/addproduct")
+    public ModelAndView uploadPage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("addProduct");
+
         return mv;
-        }
+    }
+
+    @RequestMapping(value = "/uploadFile")
+    public @ResponseBody
+    String uploadFileHandler(@RequestParam(value = "file") MultipartFile file) {
         
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public @ResponseBody
-	String uploadFileHandler(@RequestParam(value = "name") String name,
-			@RequestParam(value = "file") MultipartFile file) {
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                String name = file.getOriginalFilename();
+                // Creating the directory to store file
+                String rootPath = "Your_path_to/eShop/web/resources";
+                File dir = new File(rootPath + File.separator);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
 
-		if (!file.isEmpty()) {
-			try {
-				byte[] bytes = file.getBytes();
+                // Create the file on server
+                File serverFile = new File(dir.getAbsolutePath()
+                        + File.separator + name);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
 
-				// Creating the directory to store file
-				String rootPath = "Your_path_to/eShop/web/resources";
-				File dir = new File(rootPath + File.separator );
-				if (!dir.exists())
-					dir.mkdirs();
+                logger.info("Server File Location="
+                        + serverFile.getAbsolutePath());
 
-				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-						+ File.separator + name + ".jpg");
-				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-
-				logger.info("Server File Location="
-						+ serverFile.getAbsolutePath());
-
-				return "You successfully uploaded file:" + name + serverFile.getAbsolutePath();
-			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
-			}
-		} else {
-			return "You failed to upload " + name
-					+ " because the file was empty.";
-		}
-	}
+                return "You successfully uploaded file:" + name + serverFile.getAbsolutePath();
+            } catch (Exception e) {
+                return "You failed to upload file => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload file because the file was empty.";
+        }
+    }
 }

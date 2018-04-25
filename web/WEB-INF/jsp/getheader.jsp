@@ -4,12 +4,15 @@
 <c:choose>
     <c:when test="${sessionScope.userid != null}">
         <c:choose>
-            <c:when test="${sessionScope.usertype == admin}">
+            <c:when test="${sessionScope.type == 3}">
                 <c:import url="../html/header_admin.html"/>
             </c:when>
-            <c:otherwise>
+            <c:when test="${sessionScope.type == 2}">
+                <c:import url="../html/header_seller.html"/>
+            </c:when>
+            <c:when test="${sessionScope.type == 1}">
                 <c:import url="../html/header_member.html"/>
-            </c:otherwise>
+            </c:when>
         </c:choose>
     </c:when>
     <c:otherwise>

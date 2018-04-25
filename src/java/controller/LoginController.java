@@ -43,8 +43,8 @@ public class LoginController extends SimpleFormController {
             BindException errors) throws Exception {
         //Register register = (Register) command;
         ModelAndView mv = new ModelAndView(getSuccessView());
-        mv.addObject("name", request.getParameter("loginID"));
-        mv.addObject("pw", request.getParameter("password"));
+        mv.addObject("username", request.getParameter("username"));
+        mv.addObject("password", request.getParameter("password"));
         return mv;
     }
      

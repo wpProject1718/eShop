@@ -1,0 +1,14 @@
+.form-group{text-align:right;}
+
+#radio{margin-right: 10px;}
+
+img{
+	max-width:300px;
+	max-height:200px;
+}
+
+input[type=file]{
+	padding:10px;
+}
+
+
