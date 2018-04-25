@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,10 +66,10 @@
 		out.println("Cannot connect db!");
 	}
 	
-	String id = request.getParameter("productid");
-	if(id!=null){
+	String pid = request.getParameter("productid");
+	if(pid!=null){
 		
-		ResultSet rs = stmt.executeQuery("select product.*,category.cat_name from product LEFT JOIN category ON category.cat_id=product.product_cat where product_id ='"+id+"'");
+		ResultSet rs = stmt.executeQuery("select product.*,category.cat_name from product LEFT JOIN category ON category.cat_id=product.product_cat where product_id ='"+pid+"'");
 		
 		while(rs.next())
 		{   
@@ -108,9 +107,6 @@
 	}
 %>
 
-=======
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../jsp/getheader.jsp"/>
 </head>
 <body>
