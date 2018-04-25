@@ -4,7 +4,7 @@ body {
 
 .well{color: #000;}
 
-@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
 
 .fa-fw {width: 2em;}
 

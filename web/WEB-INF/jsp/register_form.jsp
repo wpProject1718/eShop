@@ -5,7 +5,25 @@
 <!DOCTYPE html>
 
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#sub").click(function () {
+                name = $("#user_name").val();
+                pw = $("#user_pw").val();
+				alert(name+": " +name.length);
+				alert(pw+": " +pw.length);
+				
+                if (name.length == 0 || pw.length == 0) {
+					alert("Empty field. Please correct it.");
+					return false;
+                } else {
+					$("#register").submit(); // submit form
+					
+                }
+            });
+        });
+    </script>
 <body>
     <div style="padding: 70px 0 70px 0;">
         <form action="" method="post" id="register"><table width="200" border="1">
@@ -24,7 +42,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Register" />
+                        <input type="button" value="Register" id="sub"/>
                         <input type="reset" value="Reset" />
 
                     </td>
