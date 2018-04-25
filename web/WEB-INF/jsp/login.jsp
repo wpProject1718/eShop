@@ -5,31 +5,37 @@
 <script>
     $(document).ready(function () {
         $("#submit").click(function () {
+
             name = $("#username").val();
             pw = $("#password").val();
+
             if (name.length == 0 || pw.length == 0) {
                 alert("Empty field. Please correct it.");
                 return false;
             } else {
                 $("#login").submit(); // submit form
-                /*
-                 $.ajax({
-                 type: "post",
-                 url: "../jsp/loginsuccess.jsp", //this is my servlet
-                 data: "name=" + name + "&pw=" + pw,
-                 success: function (msg) {
-                 alert(msg);
-                 //                            $("#response").html(msg);
-                 //                           $("#register")[0].reset();
-                 }
-                 });*/
+                //alert(name + pw);
+                /*$.ajax({
+                    type: "post",
+                    url: "loginsuccess.htm", //this is my servlet
+                    data: "name=" + name + "&pw=" + pw,
+                    success: function (msg) {
+                        alert(msg);
+                        //                            $("#response").html(msg);
+                        //                           $("#register")[0].reset();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Status: " + textStatus);
+                        alert("Error: " + errorThrown);
+                    }
+                });*/
             }
         });
     });
 </script>
 </head>
 <body>
-    <form action="" method="post" id="login">
+    <form action="login.htm" method="post" id="login">
         <div style="padding: 50px 0 70px 0;">
             <div class="container" style="padding-top: 20px;">
 
@@ -44,7 +50,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control" name="username" placeholder="Username" value="">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="">
                         </div>
                     </div>
                 </div>
@@ -54,7 +60,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" name="password" placeholder="Password" value="">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="">
                         </div>
                     </div>
                 </div>

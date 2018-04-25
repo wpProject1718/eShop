@@ -10,6 +10,7 @@
         $("#submit").click(function () {
             name = $("#username").val();
             pw = $("#password").val();
+             //alert(name + pw);
             //alert(name + ": " + name.length);
             //alert(pw + ": " + pw.length);
             if (name.length == 0 || pw.length == 0) {
@@ -40,7 +41,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control" name="username" placeholder="Username">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                         </div>
                     </div>
                 </div>
@@ -50,7 +51,7 @@
                     <div class="col-md-5 col-sm-9 col-xs-9">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                         </div>
                     </div>
                 </div>

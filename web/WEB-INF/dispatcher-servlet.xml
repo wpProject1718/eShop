@@ -27,7 +27,6 @@
         <property name="mappings">
             <props>
                 <prop key="home.htm">indexController</prop>
-                <prop key="login.htm">loginController</prop>
                 <prop key="logout.htm">logoutController</prop>
             </props>
         </property>
@@ -54,9 +53,6 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="home" />
-    <bean name="loginController"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="login" />
     <bean name="logoutController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="logout" />
